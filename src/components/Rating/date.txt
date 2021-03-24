@@ -1,0 +1,19 @@
+app.get('/getRatingForPieChart',function(req,res){
+        console.log('Helooooo');
+        var bot=req.query.bot;
+        var noOfDays=req.query.noOfDays;
+        console.log(noOfDays);
+        var today=new Date();
+        var firstDate=new Date();
+        firstDate.setDate(today.getDate()-noOfDays);
+        firstDate=dateformat(firstDate,"dd-mm-yy");
+        today=dateformat(today,"dd-mm-yy");
+        console.log(today);
+        console.log(firstDate);
+        var getMessageTable= "select date_FORMAT(message_date,'%d-%m-%y') date, message from entity_messages_logs eml ,entity_instance ei , instance i, entity e where eml.entity_instance_id = ei.id and ei.instance_id =i.id and ei.entity_id = e.id  and e.entity_type = 'aiengine'and eml.message like '%feedback_rating%' and i.instance_name=? and date_FORMAT(message_date,'%d-%m-%y')>=? and date_FORMAT(message_date,'%d-%m-%y')<=?";
+        con.query(getMessageTable,[bot,firstDate,today],function(err,result){
+            console.log(result);
+            res.send(JSON.stringify(result));
+        })
+      
+    });

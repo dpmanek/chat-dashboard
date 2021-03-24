@@ -1,0 +1,10 @@
+1. 'npm start' -  will start localhost 3000 on which react runs
+
+2.for backend server: 
+.\Dashboard\src\components\Server\Database.js
+
+commnad node database.js
+
+
+use amb21.sql file for database
+and schema name should be 'chatbot_statistics_dashboard_v1'

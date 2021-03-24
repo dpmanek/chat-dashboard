@@ -1,0 +1,159 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#entitytable {
+  border-collapse: collapse;
+  width: 140%;
+  margin-left: 5%;
+}
+
+#entitytable td,
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 6px;
+}
+
+#tabledata {
+  border-collapse: collapse;
+  width: 55%;
+  margin: auto;
+  margin-top: 70px;
+}
+
+#thead {
+  background-color: dodgerblue;
+}
+
+#theadcol {
+  color: white;
+}
+
+.tablebutton {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 3px 7px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.tablebutton:hover {
+  background-color: RoyalBlue;
+}
+
+.collapsiblerow {
+  display: none;
+  background-color: #f5f5f5;
+}
+
+.collapsiblerow td {
+  text-align: center;
+  padding: 12px;
+  border-top: 2px solid white;
+}
+
+#tabledata th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 6px;
+}
+
+#firstrow td {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 6px;
+}
+
+main {
+  margin: auto;
+  max-width: 960px;
+}
+
+.table-container {
+  height: 490px;
+  overflow: auto;
+  margin: auto;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  width: 85%;
+}
+
+tr.expandable > td {
+  box-shadow: inset 0 3px 6px -3px rgba(0, 0, 0, 0.2);
+  padding: 0;
+}
+
+tr.expandable > td > .inner {
+  margin: 15px;
+  overflow: hidden;
+}
+
+#mygrid {
+  height: 200px;
+  overflow: auto;
+}
+
+#mygrid > * {
+  padding: 5px 0px 0px 0px;
+}
+
+#utterance {
+  width: 350px;
+  overflow: auto;
+  margin-left: 30px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  height: 52px;
+}
+
+#entitydwn {
+  width: 20%;
+  margin-left: -18px;
+  margin-top: 7px;
+}
+
+#intentoptions {
+  width: 20%;
+  margin-top: 7px;
+}
+
+#updatebtn {
+  background-color: dodgerblue;
+  color: white;
+}
+
+#resetcontainer {
+  margin-left: 5px;
+  margin-top: 8px;
+}
+
+#resetbtn {
+  background-color: dodgerblue;
+  color: white;
+}
+
+#mybutton {
+  width: 10%;
+  margin-top: -15px;
+  margin-left: 25px;
+}
+
+#mytable {
+  margin-left: 355px;
+  width: 260px;
+  overflow: auto;
+}
+
+#entityCollection {
+  width: 170px;
+}
+#loader {
+  padding-left: 48%;
+}

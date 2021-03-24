@@ -1,0 +1,55 @@
+  //Default intent
+  app.get("/graph", function (req, res) {
+    var bot = "'" + req.query.bot + "'";
+    console.log(bot);
+    var sql =
+      "select date_FORMAT(message_date,'%d-%m-%y') conv_date, message from entity_messages_logs eml ,entity_instance ei , instance i, entity e where eml.entity_instance_id = ei.id and ei.instance_id =i.id and ei.entity_id = e.id  and e.entity_type = 'aiengine'and eml.message like 'Response from DialogflowAi%' and i.instance_name=" +
+      bot;
+
+    con.query(sql, function (err, result, fields) {
+      if (err) throw err;
+      var i, j, k;
+      var final = [];
+      var datecollection = [];
+      var countobj = [];
+      var resultobj = {};
+      var resobj = {};
+      result.forEach(function (item) {
+        var length = item.message.length;
+        var temp = item.message.substr(28, length);
+        var responseobj = JSON.parse(temp);
+        if (
+          responseobj[0].queryResult.intent != null &&
+          responseobj[0].queryResult.intent.displayName != ""
+        ) {
+          var intentname = responseobj[0].queryResult.intent.displayName;
+          final.push({ date: item.conv_date, intent: intentname });
+        }
+        //console.log(final)
+      });
+      for (i = 0; i < final.length; i++) {
+        var date = final[i].date;
+        var intent = final[i].intent;
+        var temp = resultobj[date];
+        var flag = true;
+        if (date in resultobj) {
+          for (j = 0; j < temp.length; j++) {
+            if (intent === temp[j].intent) {
+              temp[j].count++;
+              flag = false;
+              break;
+            }
+          }
+          if (flag) {
+            temp[temp.length] = { intent: intent, count: 1 };
+          }
+        } else {
+          resultobj[date] = [];
+          resultobj[date][0] = { intent: intent, count: 1 };
+        }
+      }
+      console.log(resultobj);
+      console.log("Heloo");
+      res.send(JSON.stringify(resultobj));
+    });
+  });
